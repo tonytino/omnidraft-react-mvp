@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Sets from './Sets.js';
 
 class App extends Component {
 
@@ -7,8 +8,18 @@ class App extends Component {
     super(props);
 
     this.state = {
+      displaying: 'sets'
     };
   }
+
+  renderSets = () => {
+    if (this.state.displaying === 'sets') {
+      return (
+        <Sets>
+        </Sets>
+      );
+    };
+  };
 
   render() {
     return (
@@ -20,6 +31,7 @@ class App extends Component {
         </header>
 
         <div id="App-Body">
+          { this.renderSets() }
         </div>
       </div>
     );

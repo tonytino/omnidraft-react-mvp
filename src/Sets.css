@@ -1,0 +1,14 @@
+#Sets {
+  padding: 0;
+}
+
+#Sets li {
+  font-size: 1.25rem;
+  line-height: 3.5rem;
+  list-style: none;
+}
+
+#Sets li:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
