@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import './Sets.css';
+import './Cards.css';
 import http from 'axios';
 
-class Sets extends Component {
+class Cards extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      sets: []
+      cards: []
     };
   };
 
   componentWillMount() {
-    this.fetchSets();
+    this.fetchCards();
   };
 
-  // Sorts the sets based on their name, in alphabetical ascending order
-  sortSets = (sets) => {
-    return sets
+  // Sorts the cards based on their name, in alphabetical ascending order
+  sortCards = (cards) => {
+    return cards
       .sort(function(a, b) {
         // Sort implementation based on MDN Docs for .sort():
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
@@ -38,16 +38,18 @@ class Sets extends Component {
       });
   };
 
-  // GET /sets
-  // Updates state[:sets] if successful, with all sets (sorted alphabetically)
-  fetchSets = () => {
-    // We only want expansion sets, those designed for drafting, e.g. Innistrad
-    const setsApi = 'https://api.magicthegathering.io/v1/sets?type=expansion'
-    return http.get(setsApi)
+  // GET /cards
+  // Updates state[:cards] if successful, with all cards (sorted alphabetically)
+  fetchCards = () => {
+    // We only want expansion cards, those designed for drafting, e.g. Innistrad
+    const set = this.props.setAcronym;
+    const cardsApi = `https://api.magicthegathering.io/v1/cards?set=${set}`
+
+    return http.get(cardsApi)
       .then(response => {
         console.log(response);
         this.setState({
-          sets: this.sortSets(response.data.sets)
+          cards: this.sortCards(response.data.cards)
         });
       })
       .catch(error => {
@@ -55,22 +57,23 @@ class Sets extends Component {
       });
   };
 
-  logSelection = (selectedSet) => {
-    const set = selectedSet.target;
-    const setName = set.id;
-
-    this.props.reportSelection(setName);
-  };
-
-  renderSets = () => {
-    return this.state.sets.map(set => {
+  renderCards = () => {
+    return this.state.cards.map(card => {
       return (
         <li
-          id={set.code}
-          key={set.code}
-          onClick={this.logSelection}
+          key={card.id}
         >
-          {set.name}
+          <span
+            className="Card-Name"
+          >
+            {card.name}
+          </span>
+
+          <img
+            alt={card.name}
+            className="Card-Image"
+            src={card.imageUrl}
+          />
         </li>
       );
     });
@@ -78,10 +81,10 @@ class Sets extends Component {
 
   render() {
     return (
-      <div id="Sets-Container">
-        <ul id="Sets">
+      <div id="Cards-Container">
+        <ul id="Cards">
           {
-            this.renderSets()
+            this.renderCards()
           }
         </ul>
       </div>
@@ -89,4 +92,4 @@ class Sets extends Component {
   };
 }
 
-export default Sets;
+export default Cards;

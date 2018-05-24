@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Cards from './Cards.js';
 import Sets from './Sets.js';
 
 class App extends Component {
@@ -8,14 +9,35 @@ class App extends Component {
     super(props);
 
     this.state = {
-      displaying: 'sets'
+      displaying: 'sets',
+      setAcronym: ''
     };
   }
+
+  reportSelection = (setAcronym) => {
+    this.setState({
+      displaying: 'cards',
+      setAcronym: setAcronym
+    });
+  };
+
+  renderCards = () => {
+    if (this.state.displaying === 'cards') {
+      return (
+        <Cards
+          setAcronym={this.state.setAcronym}
+        >
+        </Cards>
+      );
+    };
+  };
 
   renderSets = () => {
     if (this.state.displaying === 'sets') {
       return (
-        <Sets>
+        <Sets
+          reportSelection={this.reportSelection}
+        >
         </Sets>
       );
     };
@@ -31,6 +53,7 @@ class App extends Component {
         </header>
 
         <div id="App-Body">
+          { this.renderCards() }
           { this.renderSets() }
         </div>
       </div>

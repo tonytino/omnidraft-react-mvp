@@ -1,0 +1,20 @@
+#Cards {
+  padding: 0;
+}
+
+#Cards li {
+  font-size: 1.25rem;
+  line-height: 3.5rem;
+  list-style: none;
+}
+
+#Cards li .Card-Name {
+  display: block;
+}
+
+#Cards li .Card-Image {
+}
+
+#Cards li:hover {
+  background-color: whitesmoke;
+}
