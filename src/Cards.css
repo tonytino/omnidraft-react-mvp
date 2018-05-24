@@ -3,16 +3,21 @@
 }
 
 #Cards li {
+  display: inline-block;
   font-size: 1.25rem;
   line-height: 3.5rem;
   list-style: none;
+  min-width: 100%;
 }
 
 #Cards li .Card-Name {
   display: block;
+  float: left;
+  line-height: initial;
 }
 
 #Cards li .Card-Image {
+  float: right;
 }
 
 #Cards li:hover {
