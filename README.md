@@ -1,3 +1,54 @@
+## Omnidraft
+
+### Purpose
+
+Empower Magic: the Gathering players with perfect information about the contents of sets. Players should be able to quickly determine what cards they need to be aware of based on their given situation. Whether they're in a match, or drafting, they can scope the contents of a set based on parameters they define.
+
+### Usage
+
+1. Select a set
+2. Apply filters to set
+3. Sort cards in subset
+4. Inspect cards in subset
+
+#### Filters
+
+- Power (greater than, equal to, less than)
+- Toughness
+- Card Type
+- Subtype
+- Rarity
+- Color Identity
+- Description Includes
+- Name Includes
+
+#### Sorting
+
+Note that sorting is being categorized separately from **Filters**. Sorting should happen after filtering, e.g. filter out all creatures with power greater 3, than sort the remaining creatures alphabetically (based on name).
+
+- Reverse
+- Power
+- Toughness
+- Card Type
+- Rarity
+- Color Identity
+- Name
+
+### Feature Requests
+
+#### Can Be Cast
+
+If a card could be cast and it's in the set, show it. Determine this using a **Mana Pool** filter: track the available mana of a player to determine all possible plays.
+
+#### Easy Stats
+
+Display some high-level, insightful details about a given set. For example:
+
+- Number of creatures with every stat pairing (e.g. 3 1/1s, 2 1/2s)
+- Number of each card type (e.g. 17 Instants)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
