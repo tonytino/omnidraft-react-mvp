@@ -16,6 +16,30 @@ class Cards extends Component {
     this.fetchCards();
   };
 
+  cardStats = (card) => {
+    let cardStats = '';
+
+    // refactorme
+    if (card.power && card.toughness) {
+      cardStats = `${card.power} / ${card.toughness}`;
+    }
+
+    return cardStats;
+  };
+
+  doubleNewLines = (text, flavor) => {
+    let newText = '';
+
+    // refactorme
+    if (text) {
+      newText = text.replace(/\n/g, '\n\n')
+    } else if (flavor) {
+      newText = <em>{flavor.replace(/\n/g, '\n\n')}</em>
+    };
+
+    return newText;
+  };
+
   // Sorts the cards based on their name, in alphabetical ascending order
   sortCards = (cards) => {
     return cards
@@ -63,11 +87,43 @@ class Cards extends Component {
         <li
           key={card.id}
         >
-          <span
-            className="Card-Name"
+          <div
+            className="Card-Details"
           >
-            {card.name}
-          </span>
+            <h3
+              className="Card-Name"
+            >
+              {card.name}
+              <span
+                className="Card-Cost"
+              >
+                {card.manaCost}
+              </span>
+            </h3>
+
+            <h6
+              className="Card-Type-and-Rarity"
+            >
+              {card.type}
+              <span
+                className="Card-Rarity"
+              >
+                {card.rarity}
+              </span>
+            </h6>
+
+            <p
+              className="Card-Description"
+            >
+              {this.doubleNewLines(card.text, card.flavor)}
+            </p>
+
+            <h6
+              className="Card-Stats"
+            >
+              {this.cardStats(card)}
+            </h6>
+          </div>
 
           <img
             alt={card.name}

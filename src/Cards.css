@@ -3,21 +3,75 @@
 }
 
 #Cards li {
-  display: inline-block;
+  display: block;
   font-size: 1.25rem;
+  height: 15rem;
   line-height: 3.5rem;
   list-style: none;
+  margin-bottom: 1rem;
   min-width: 100%;
 }
 
-#Cards li .Card-Name {
+#Cards li .Card-Details {
+  display: inline-block;
+  float: left;
+  height: 100%;
+  width: 69%;
+}
+
+#Cards li .Card-Details .Card-Name {
   display: block;
   float: left;
   line-height: initial;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+#Cards li .Card-Details .Card-Name .Card-Cost {
+  float: right;
+  margin-top: 0.5rem;
+  font-size: x-small;
+}
+
+#Cards li .Card-Details .Card-Type-and-Rarity {
+  display: block;
+  float: left;
+  line-height: initial;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+#Cards li .Card-Details .Card-Type-and-Rarity .Card-Rarity {
+  float: right;
+}
+
+#Cards li .Card-Details .Card-Description {
+  font-size: small;
+  line-height: initial;
+  text-align: left;
+  white-space: pre-line;
+}
+
+#Cards li .Card-Details .Card-Stats {
+  position: relative;
+  bottom: 0;
+  display: block;
+  float: right;
+  line-height: initial;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: right;
+  width: 100%;
 }
 
 #Cards li .Card-Image {
+  display: inline-block;
   float: right;
+  height: 100%;
 }
 
 #Cards li:hover {
